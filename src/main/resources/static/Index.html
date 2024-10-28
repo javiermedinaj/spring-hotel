@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring application</title>
+</head>
+<body>
+    <h1> this is a spring app</h1>
+    <table>
+        <tr>
+            <th>Room</th>
+            <th>Room Number</th>
+            <th>Guest</th>
+        </tr>
+        <tr th:each="roomReservation: ${roomReservations}">
+            <td th:text="${roomReservation.roomName}">Room</td>
+            <td th:text="${roomReservation.roomNumber}">Room Number</td>
+            <td>
+                <span th:if="${roomReservation.guest != null}" th:text="${roomReservation.guest.firstName + ', ' + roomReservation.guest.lastName}">Guest</span>
+                <span th:unless="${roomReservation.guest != null}">VACANT</span>
+            </td>
+        </tr>
+    </table>
+    <a href="/reservations">room res</a>
+</body>
+</html>
